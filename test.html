@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #one{background-color: red;height: 30px;width: 30px;position: absolute;}
+    </style>
+    <script>
+        window.onload = function () {
+            var one = document.getElementById("one");
+            one.onmousedown = function () {
+                document.onmousemove = function (e){
+                    one.style.left = e.clientX + "px";
+                    one.style.top = e.clientY + "px";
+                }
+            }
+        }
+
+    </script>
+    <script>
+        window.onload = function (){
+           var  pro = document.getElementsByTagName("progress")[0];
+            var t = setInterval(
+                    function (){
+                        if (pro.value == 10){
+                            clearInterval(t);
+                            document.body.removeChild(pro);
+                            var spans = document.createElement("span");
+                            spans.innerHTML = "加载文成";
+                            document.body.appendChild(spans);
+                        }else{
+                            pro.value++;
+                        }
+                    },1000
+            );
+        }
+    </script>
+
+</head>
+<body>
+请输入姓名：<input type="text" list="li"/>
+<datalist id="li">
+    <option>
+        张三
+    </option>
+    <option>
+        李四
+    </option>
+    <option>
+        王五
+    </option>
+</datalist>
+
+
+<div id="one">
+
+    </div>
+<progress min=0 max=10 value=1></progress>
+</body>
+</html>
+
